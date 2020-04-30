@@ -18,7 +18,7 @@
     "fcbuffer": "^2.2.2",
     "isomorphic-fetch": "^2.2.1",
     "iview": "^3.4.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "scatterjs-core": "^2.7.18",
     "scatterjs-plugin-eosjs": "^1.5.1",
     "vconsole": "^3.3.0",
