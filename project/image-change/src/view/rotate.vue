@@ -2,6 +2,7 @@
   <div class="homeDiv" id="homeDiv">
     <div class="uploadDiv">
       <div class="topInput">初始下标: <input type="text" v-model.number="beginIndex" :disabled="isControl" oninput="value=value.replace(/[^\d]/g,'')" placeholder="需要小一位"></div>
+      <div class="topInput">文件长度: <input type="text" v-model.number="imgLength" :disabled="isControl" oninput="value=value.replace(/[^\d]/g,'')" placeholder="需要小一位"></div>
       <div class="upload">
         <p>修改的文件</p>
         <input class="file" type="file" ref="file" @change="getFileData" multiple="multiple">
@@ -21,7 +22,7 @@ export default {
       // 选中的文件个数
       filesLength:0,
       // 选中文件个数是几位数
-      imgLength:0,
+      imgLength:4,
       // 文件开始下标
       beginIndex:0,
       // 控制是否可输入
@@ -50,12 +51,7 @@ export default {
       // 获取文件列表长度
       this.filesLength = files.length;
 
-      // 获取文件列表长度是几位数
-      var imgLengthLin = this.filesLength+this.beginIndex;
-      imgLengthLin = imgLengthLin+''
-      this.imgLength = imgLengthLin.length;
-      console.log("查看选择图片的长度",this.imgLength)
-      if (this.filesLength+this.beginIndex>this.imgNum+this.beginIndex) {
+      if (this.filesLength>this.imgNum) {
         var type = files[this.imgNum].type.split('/')[0]
         if (type === 'image') {
           var reader = new FileReader();
