@@ -38,6 +38,8 @@ export default {
       }else{
         // debugger;
         this.imgNum=0;
+        this.filesLength=0;
+        this.beginIndex=0;
         this.isControl=false;
       }
     },
