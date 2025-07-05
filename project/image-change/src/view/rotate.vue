@@ -1,6 +1,7 @@
 <template>
   <div class="homeDiv" id="homeDiv">
     <div class="uploadDiv">
+      <div class="topInput">名称前缀: <input type="text" v-model="beginName" :disabled="isControl" placeholder="请输入前缀名"></div>
       <div class="topInput">初始下标: <input type="text" v-model.number="beginIndex" :disabled="isControl" oninput="value=value.replace(/[^\d]/g,'')" placeholder="需要小一位"></div>
       <div class="topInput">文件长度: <input type="text" v-model.number="imgLength" :disabled="isControl" oninput="value=value.replace(/[^\d]/g,'')" placeholder="需要小一位"></div>
       <div class="upload">
@@ -23,6 +24,8 @@ export default {
       filesLength:0,
       // 选中文件个数是几位数
       imgLength:4,
+      // 文件前缀名
+      beginName:'',
       // 文件开始下标
       beginIndex:0,
       // 控制是否可输入
@@ -133,6 +136,7 @@ export default {
         }
       }
       console.log("查看处理后的名称",imageName)
+      imageName = this.beginName+imageName
       // 图片转为base64
       var blob = this.convertBase64UrlToBlob(base64); // 转为blob对象
       // 下载
